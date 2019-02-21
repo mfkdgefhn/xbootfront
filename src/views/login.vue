@@ -228,9 +228,9 @@ export default {
       maxLength: 6,
       errorCode: "",
       form: {
-        username: "test或test2 可注册",
-        password: "123456",
-        mobile: "请输入手机号",
+        username: "",
+        password: "",
+        mobile: "",
         code: ""
       },
       rules: {
@@ -271,10 +271,13 @@ export default {
       this.$refs.mobileLoginForm.validate(valid => {
         if (valid) {
           this.showErrorMsg("已经发送！请等待")
-          this.countDown();
+          // this.countDown();
+          this.sended = !this.sended
+          this.countDown
         }
       });
     },
+    // 发送短信自动减秒
     countDown () {
       let that = this;
       if (this.count === 0) {

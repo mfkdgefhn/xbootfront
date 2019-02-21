@@ -107,7 +107,9 @@
              justify="space-between"
              class="code-row-bg">
           <Checkbox v-model="saveLogin"
-                    size="large">自动登录</Checkbox>
+                    size="large">
+            自动登录
+          </Checkbox>
           <Dropdown trigger="click"
                     @on-click="handleDropDown">
             <a class="forget-pass">
@@ -267,13 +269,14 @@ export default {
       this.error = true;
       this.errorMsg = msg;
     },
+    // 发送短信
     sendVerify () {
       this.$refs.mobileLoginForm.validate(valid => {
         if (valid) {
           this.showErrorMsg("已经发送！请等待")
           // this.countDown();
           this.sended = !this.sended
-          this.countDown
+          this.countDown();
         }
       });
     },
@@ -292,9 +295,12 @@ export default {
         that.countDown();
       }, 1000);
     },
+
     submitLogin () {
       if (this.tabName === "username") {
+        // 帐号登录验证
         this.$refs.usernameLoginForm.validate(valid => {
+          // console.log(valid)
           if (valid) {
             this.loading = true;
             login({
@@ -335,6 +341,7 @@ export default {
           }
         });
       } else if (this.tabName === "mobile") {
+        // 手机登录验证
         this.$refs.mobileLoginForm.validate(valid => {
           if (valid) {
             if (this.form.code === "") {

@@ -162,7 +162,11 @@
                     name="brands/weixin"></icon>
             </div>
           </div>
-          <router-link to="/regist"><a class="forget-pass">注册账户</a></router-link>
+          <router-link to="/regist">
+            <a class="forget-pass">
+              注册账户
+            </a>
+          </router-link>
         </Row>
       </Row>
 
